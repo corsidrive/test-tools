@@ -16,17 +16,34 @@
  * @var    $line
  * @return void
  */
-function assertEquals($expected,$actual,$description = '',$line = NULL){
-    
-    if ($expected !== $actual ) {
-        echo "FAIL: $description \n";
-        echo "atteso  '$expected' (".gettype($expected).")\n";
-        echo "trovato '$actual' (".gettype($actual).")\n\n";
-        return true;
-    } else {
-        echo "PASS: $description \n";
-        echo "atteso  '$expected' (".gettype($expected).")\n";
-        echo "trovato '$actual' (".gettype($actual).")\n\n";
-        return false;
-    }
+function assertEquals($expected,$actual,$description = '', $line = null ) 
+{
+    displayResultCLI($expected, $actual, $description, $line);
 };
+
+/**
+ * Visualizza il risultato del test via cli
+ */
+function displayResultCLI($expected,$actual,$description = '', $line = null )
+{
+        $result = $expected !== $actual ? 'FAIL' : 'PASS'; 
+        echo "\n-----------------------------\n\n";
+        echo "$result: $description \n";
+        echo "atteso  '$expected' (".gettype($expected).")\n";
+        echo "trovato '$actual' (".gettype($actual).")\n";
+        echo "line: $line\n";   
+}
+
+/**
+ * Visualizza il risultato di un test via web
+ */
+function displayResultWEB($expected,$actual,$description = '', $line = null )
+{
+    $display = nl2br(displayResultCLI($expected, $actual, $description = '', $line = null));
+
+    ?>
+    <div class='card-pass'>
+        <?= $display ?>
+    </div>
+    <?php 
+}
