@@ -1,0 +1,11 @@
+{
+    "name": "formarete-2021/test-tools",
+    "type": "library",
+    "authors": [
+        {
+            "name": "formarete",
+            "email": "sarassoroberto@gmail.com"
+        }
+    ],
+    "require": {}
+}
