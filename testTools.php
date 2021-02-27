@@ -18,12 +18,15 @@
  */
 function assertEquals($expected,$actual,$description = '',$line = NULL){
     
-    if($expected !== $actual){
+    if ($expected !== $actual ) {
         echo "FAIL: $description \n";
         echo "atteso  '$expected' (".gettype($expected).")\n";
         echo "trovato '$actual' (".gettype($actual).")\n\n";
         return true;
-    }else{
+    } else {
+        echo "PASS: $description \n";
+        echo "atteso  '$expected' (".gettype($expected).")\n";
+        echo "trovato '$actual' (".gettype($actual).")\n\n";
         return false;
     }
 };
