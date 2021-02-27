@@ -1,9 +1,9 @@
 {
-    "name": "formarete-2021/test-tools",
+    "name": "corsidrive/test-tools",
     "type": "library",
     "authors": [
         {
-            "name": "formarete",
+            "name": "corsidrive",
             "email": "sarassoroberto@gmail.com"
         }
     ],
