@@ -6,7 +6,7 @@
  * @author Sarasso Roberto <sarassoroberto@gmail.com>
  */
 
-define('SHOW_PASS_TEST', true);
+define('HIDE_PASS_TEST', false);
 
 /**
  * Controlla se un affermazione è corretta
@@ -20,7 +20,12 @@ define('SHOW_PASS_TEST', true);
  */
 function assertEquals($expected,$actual,$description = '', $line = null ) 
 {
-    displayResultCLI($expected, $actual, $description, $line);
+    if ($expected !== $actual) {
+        displayResultCLI($expected, $actual, $description, $line);
+        return false;
+    } else {
+        return true;
+    }
 };
 
 /**
@@ -30,17 +35,12 @@ function assertEquals($expected,$actual,$description = '', $line = null )
  */
 function displayResultCLI($expected,$actual,$description = '', $line = null )
 {
-    if($expected === $actual && SHOW_PASS_TEST)
-    {
-        return ''; 
-    }
-
-    $result = $expected !== $actual ? 'FAIL' : 'PASS'; 
+    $result = $expected !== $actual ? 'FAIL' : 'PASS';
     echo "\n-----------------------------\n\n";
     echo "$result: $description \n";
     echo "atteso  '$expected' (".gettype($expected).")\n";
     echo "trovato '$actual' (".gettype($actual).")\n";
-    echo "line: $line\n";   
+    echo "line: $line\n"; 
 }
 
 /**
@@ -55,4 +55,19 @@ function displayResultWEB($expected,$actual,$description = '', $line = null )
         <?= $display ?>
     </div>
     <?php 
+}
+
+/** 
+ * Dato un array con una serie di valori booleani 
+ * conta valori veri e i valori falsi
+*/
+function reportPassFail(array $value)
+{
+    $total = count($value);
+    $pass  = count(array_filter($value));
+    return [
+        'total' => $total,
+        'pass'  => $pass,
+        'fail'  => $total - $pass
+    ];
 }
