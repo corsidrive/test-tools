@@ -26,12 +26,17 @@ function assertEquals($expected,$actual,$description = '', $line = null )
  */
 function displayResultCLI($expected,$actual,$description = '', $line = null )
 {
-        $result = $expected !== $actual ? 'FAIL' : 'PASS'; 
-        echo "\n-----------------------------\n\n";
-        echo "$result: $description \n";
-        echo "atteso  '$expected' (".gettype($expected).")\n";
-        echo "trovato '$actual' (".gettype($actual).")\n";
-        echo "line: $line\n";   
+    if($expected === $actual )
+    {
+        return ''; 
+    }
+
+    $result = $expected !== $actual ? 'FAIL' : 'PASS'; 
+    echo "\n-----------------------------\n\n";
+    echo "$result: $description \n";
+    echo "atteso  '$expected' (".gettype($expected).")\n";
+    echo "trovato '$actual' (".gettype($actual).")\n";
+    echo "line: $line\n";   
 }
 
 /**
