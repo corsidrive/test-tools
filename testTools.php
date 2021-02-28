@@ -48,7 +48,7 @@ function displayResultCLI($expected,$actual,$description = '', $line = null )
  */
 function displayResultWEB($expected,$actual,$description = '', $line = null )
 {
-    $display = nl2br(displayResultCLI($expected, $actual, $description = '', $line = null));
+    $display = nl2br(displayResultCLI($expected, $actual, $description, $line));
 
     ?>
     <div class='card-pass'>
