@@ -6,15 +6,17 @@
  * @author Sarasso Roberto <sarassoroberto@gmail.com>
  */
 
+define('SHOW_PASS_TEST', true);
 
 /**
  * Controlla se un affermazione è corretta
  * 
- * @var    $expected valore atteso
- * @var    $actual valore da controllare
- * @var    $description eventuale descrizione del test
- * @var    $line
+ * @var    $expected    valore atteso
+ * @var    $actual      valore corrente da confrontare  
+ * @var    $description descrizione del test
+ * @var    $line        linea del dataset a cui appartiene il test 
  * @return void
+ *
  */
 function assertEquals($expected,$actual,$description = '', $line = null ) 
 {
@@ -23,10 +25,12 @@ function assertEquals($expected,$actual,$description = '', $line = null )
 
 /**
  * Visualizza il risultato del test via cli
+ *
+ * @return void
  */
 function displayResultCLI($expected,$actual,$description = '', $line = null )
 {
-    if($expected === $actual )
+    if($expected === $actual && SHOW_PASS_TEST)
     {
         return ''; 
     }
